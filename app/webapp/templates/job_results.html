@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Results - SALADS</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+
+body, html {
+  height: 100%;
+  line-height: 1.8;
+}
+
+/* Full height image header */
+.bgimg-1 {
+  background-position: center;
+  background-size: cover;
+  background-image: url("https://www.israel21c.org/wp-content/uploads/2021/09/cdc-unsplash.jpg");
+  min-height: 100%;
+}
+
+.w3-bar .w3-button {
+  padding: 16px;
+}
+
+input[type=file]::file-selector-button {
+  border: 2px solid #6c5ce7;
+  padding: .2em .4em;
+  border-radius: .2em;
+  background-color: #a29bfe;
+  transition: 1s;
+  color:  black;
+  display: inline-block;
+
+}
+
+input[type=file]::file-selector-button:hover {
+  background-color: #81ecec;
+  border: 2px solid #00cec9;
+}
+
+input[type=text] {
+  background-color: white;
+  border: 2px solid #00cec9;
+  text-align: center;
+  width:  98%;
+  font-family: "Arial", sans-serif;
+  font-size:  1em;
+  padding:  5px;
+  border-radius: 8px;
+}
+
+.w3-display-middle{
+  justify-content: space-around;
+}
+
+.w3-display-middle a{
+  background:  lightgrey;  
+  color:black; 
+  align-items: centre; 
+  text-align: justify; 
+  font-weight: bold; 
+  padding: .4em .4em; 
+  border-radius: .2em; 
+  display: inline-block;
+}
+
+
+</style>
+</head>
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-card" id="myNavbar">
+    <a href="/#home" class="w3-bar-item w3-button w3-wide">SALADS - <i>SALmonella entericA</i> preDiction and Subtyping</a>
+    <!-- Right-sided navbar links -->
+    <div class="w3-right w3-hide-small">
+      <a href="/#about" class="w3-bar-item w3-button">ABOUT</a>
+    </div>
+  </div>
+</div>
+
+<!-- Header with full-height image -->
+<header class="bgimg-1 w3-display-container w3-grayscale-min" id="home">
+  <div class="w3-display-middle" style="justify-content: center;">
+    {% if job_status == 'running' %}
+      <p style="color:white; align-items: centre; font-weight: bold; text-align: center-justify;" class="w3-xlarge"> Successfully submitted job! Check your email (and spam folder) for further information.</p>
+    {% else %}
+      <p style="color:white; align-items: centre; font-weight: bold; text-align: center-justify;" class="w3-xlarge"> Your results are ready! Please use the links below to download your results:</p>
+      <p style="color:white; align-items: centre; font-weight: bold; text-align: center-justify;" class="w3-large">Phylogenetic tree:</p>
+      <a href="{% url 'webapp:download' pk 'phylogeny_tree.pdf' %}" class="w3-large" style= "width: 100%; text-align: center;">Download tree (.pdf)</a>
+      <p style="color:white; align-items: centre; font-weight: bold; text-align: center-justify;" class="w3-large">Average nucleotide identify (ANI) heatmap:</p>
+      <a href="{% url 'webapp:download' pk 'heatmap.pdf' %}" class="w3-large" style= "width: 100%; text-align: center;">Download ANI heatmap (.pdf)</a>
+      <p style="color:white; align-items: centre; font-weight: bold; text-align: center-justify;" class="w3-large">Stage-specific outputs:</p>
+      <a href="{% url 'webapp:download' pk 'assembly.zip' %}" class="w3-large" style= "width: 100%; text-align: center;">
+        Download Genome Assembly Results (.zip)
+      </a>
+      <br>
+      <br>
+      <a href="{% url 'webapp:download' pk 'gene_predictions.zip' %}" class="w3-large" style= "width: 100%; text-align: center;">
+        Download Gene Prediction Results (.zip)
+      </a>
+      <br>
+      <br>
+      <a href="{% url 'webapp:download' pk 'functional_output.zip' %}" class="w3-large" style= "width: 100%; text-align: center;">
+        Download Functional Annotation Results (.zip)
+      </a>
+      <br>
+      <br>
+      <a href="{% url 'webapp:download' pk 'comp_genomics.zip' %}" class="w3-large" style= "width: 100%; text-align: center;">
+        Download Comparative Genomics Results (.zip)
+      </a>
+    {% endif %}
+
+<br>
+
+
+</header>
+
+
+
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Home - SALADS</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+
+body, html {
+  height: 100%;
+  line-height: 1.8;
+}
+
+/* Full height image header */
+.bgimg-1 {
+  background-position: center;
+  background-size: cover;
+  background-image: url("https://www.israel21c.org/wp-content/uploads/2021/09/cdc-unsplash.jpg");
+  min-height: 100%;
+}
+
+.w3-bar .w3-button {
+  padding: 16px;
+}
+
+input[type=file]::file-selector-button {
+  border: 2px solid #6c5ce7;
+  padding: .2em .4em;
+  border-radius: .2em;
+  background-color: #a29bfe;
+  transition: 1s;
+  color:  black;
+  display: inline-block;
+
+}
+
+input[type=file]::file-selector-button:hover {
+  background-color: #81ecec;
+  border: 2px solid #00cec9;
+}
+
+
+input[type=text] {
+  background-color: white;
+  border: 2px solid #00cec9;
+  text-align: center;
+  width:  98%;
+  font-family: "Arial", sans-serif;
+  font-size:  1em;
+  padding:  5px;
+  border-radius: 8px;
+}
+
+input[type=submit] {
+  border: 2px solid #6c5ce7;
+  padding: .2em .4em;
+  border-radius: .2em;
+  background-color: #a29bfe;
+  transition: 1s;
+  color:  black;
+  display: inline-block;
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-card" id="myNavbar">
+    <a href="#home" class="w3-bar-item w3-button w3-wide">SALADS - <i>SALmonella entericA</i> preDiction and Subtyping</a>
+    <!-- Right-sided navbar links -->
+    <div class="w3-right w3-hide-small">
+      <a href="#about" class="w3-bar-item w3-button">ABOUT</a>
+    </div>
+  </div>
+</div>
+
+<!-- Header with full-height image -->
+<header class="bgimg-1 w3-display-container w3-grayscale-min" id="home">
+  <div class="w3-display-left w3-text-white" style="padding:54px">
+    <span class="w3-jumbo w3-hide-small">SALADS: The Team 1 Webserver</span><br>
+    <span class="w3-xxlarge w3-hide-large w3-hide-medium">Start something that matters</span><br>
+    <span class="w3-large">Stop wasting time and analyze your <i>Salmonella enterica</i> isolate today.</span>
+
+    <form action="" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <p>
+        <p>Name first file: <mark>&ltisolate_name&gt_1.fq.gz</mark></p>
+        <label for="reads1">Upload the first FASTQ file:</label>
+        <input type="file" id="reads1" name="paired_ends_1" required>
+      </p>
+      <p>
+        <p>Name second file: <mark>&ltisolate_name&gt_2.fq.gz</mark></p>
+        <label for="reads2">Upload the second FASTQ file:</label>
+        <input type="file" id="reads2" name="paired_ends_2" required>
+      </p>
+      <input type="text" name="email" placeholder="Enter your email address" required>
+      <br></br>
+      <input type="submit" value="Run Pipeline" class="w3-button w3-padding-large w3-large w3-margin-top w3-hover-opacity-off">
+    </form>
+  </div> 
+</header>
+
+  <!-- Instructions Section -->
+  <div class="w3-container w3-padding-32" id="about">
+    <h3 class="w3-center">Instructions</h3>
+    <ol>
+      <li>Upload paired-end read FASTQ files (one forward file, one reverse file) for one isolate.</li>
+      <li>Enter your email address</li>
+      <li>Run the pipeline using the "Run Pipeline" button.</li>
+    </ol>
+  </div>
+
+
+  
+ 
+<!-- Pipeline info Section -->
+<div class="w3-container" style="padding:38px 16px" id="moreinfo">
+  <h3 class="w3-center">ABOUT THE PIPELINE</h3>
+  <p>This foodborne pathogen analysis pipeline performs genomics analysis on <i>Salmonella enterica</i> isolates. The full pipeline contains four steps: genome analysis, gene prediction, functional annotation, and comparative genomics. The pipeline is run in full.
+  </p>
+  <div class="w3-row-padding w3-grayscale" style="margin-top:64px">
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-card">
+        <img 		src="https://media.springernature.com/relative-r300-703_m1050/springer-static/image/art%3A10.1038%2Fnmeth.1935/MediaObjects/41592_2012_Article_BFnmeth1935_Figa_HTML.jpg?as=webp" alt="Genome Assembly" style="width:100%" height="300">
+        <div class="w3-container">
+          <h3>Genome Assembly</h3>
+          <p class="w3-opacity">Why assemble the genome?</p>
+          <p>To stitch together the original chromosomes from the fragmented reads of DNA.</p>
+          <p class="w3-opacity">How do we assemble the genome?</p>
+          <p> The assembly pipeline performs read trimming and de novo assembly given paired-end read files in FASTQ format. Initial read quality assessment and trimming are performed with FastQC and BBDuk, respectively. MultiQC is used to compile read quality metrics for all isolates into one quality assessment output. Assemblies are produced using SPAdes, and assembly quality reports are produced using QUAST. </p>
+        </div>
+      </div>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-card">
+        <img src="https://www.sapiens.org/wp-content/uploads/2020/03/01_GettyImages-1161024139.jpg" alt="Jane" style="width:100%" height="300">
+        <div class="w3-container">
+          <h3>Gene Prediction</h3>
+          <p class="w3-opacity">Why predict genes?</p>
+          <p>To computationally infer the portions of DNA sequence that are biologically significant</p>
+          <p class="w3-opacity">How do we predict genes?</p>
+          <p> The prediction pipeline predicts coding and noncoding (RNA) genes given the output from genome assembly. Glimmer, Genemark-S2 and Prodigal predict the coding regions, and Infernal is used to predict the noncoding genes. Bedtools is used to merge the results from the aforementioned tools. The output comprises the GFF, FNA and FAA files with the predicted coding and noncoding genes</p>
+        </div>
+      </div>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-card">
+        <img src= 'https://st2.depositphotos.com/1561359/7438/v/950/depositphotos_74388003-stock-illustration-industrial-robotic-arm-building-function.jpg'alt="Mike" style="width:100%" height="300">
+        <div class="w3-container">
+          <h3>Functional Annotation</h3>
+          <p class="w3-opacity">Why annotate genes?</p>
+          <p>To attach biological information about what cellular processes a gene carries out.</p>
+          <p class="w3-opacity">How do we annotate genes?</p>
+          <p> The functional annotation pipeline uses both homology and ab-initio tools. For homology based prediction, Eggnog mapper, CARD-RGI(antibiotic resistance) and VFDB(virulence factors) are used. The ab-initio tools used for signal & membrane proteins annotation are SignalP and TMHMM. For non-coding genes, the assembled contigs are used as input for Piler-CR. The final output is a merged GFF file.</p>
+        </div>
+      </div>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-card">
+        <img src="https://smartech.gatech.edu/bitstream/handle/1853/44433/75-125-1-SP-1.png?sequence=5&isAllowed=y" alt="Dan" style="width:100%" height="300">
+        <div class="w3-container">
+          <h3>Comparative Genomics</h3>
+          <p class="w3-opacity">Why compare isolates?</p>
+          <p> To identify outbreak strains through the genetic relatedness between isolates. </p>
+          <p class="w3-opacity">How do we compare isolates?</p>
+          <p> The comparative genomics pipeline takes fasta files from the genome assembly output and identifies clusters and similarities using fastANI, MUMmer and kSNP. MLST and chewBBACA provide and utilize housekeeping genes as additional verification of clusters. AMRFinder uses AMR and virulent genes to infer the isolate's antibiotic profile. The appropriate antibiotic recommendations are then made to the affected public.
+              </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <!-- Image of location/map -->
+    <img src="https://i.kym-cdn.com/photos/images/newsfeed/002/330/127/fd7.png" class="w3-image w3-greyscale" style="width:100%;margin-top:48px">
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="w3-center w3-black w3-padding-64">
+  <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+  <div class="w3-xlarge w3-section">
+  </div>
+   </a></p>
+</footer>
+</body>
+</html>
