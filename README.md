@@ -1,5 +1,8 @@
 # SALADS (*SAL*monella enteric*A* pre**D**iction and **S**ubtyping)
 
+http://groupa.bioappgenome22.biosci.gatech.edu/
+
+
 **Team Members:** Amartya Mandal, Mannan Bhola, Erin Connolly, Varsha Bhat, Zack Mudge, Shreyash Gupta, Palak Aggarwal  
 
 We present **SALADS** (***SAL**monella enteric**A*** pre**D**iction and **S**ubtyping), a browser-based predictive webserver to identify and analyze Salmonella strain diversity for users with limited coding experience. **SALADS** aims to support bioinformaticians with a functional toolbox, allowing seamless integration of de novo assembly with SNP-based and phylogenomic analytic pipelines for unprecedented precision and detection of pathogenic Salmonella strains. **SALADS** can perform the following analyses given an input of raw sequence reads:
